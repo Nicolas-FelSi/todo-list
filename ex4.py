@@ -15,4 +15,4 @@ for letra in frase:
     if letra in vogais:
         contador += 1
 
-print(f"A frase {frase} contém {contador} vogais.")
+print(f"A frase \"{frase}\" contém {contador} vogais.")
