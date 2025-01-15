@@ -13,7 +13,11 @@
 from time import sleep
 
 
-lista_contatos = []
+lista_contatos = [
+    { "nome": "Nicolas", "telefone": "38492348328" },
+    { "nome": "Isabela", "telefone": "823894283" },
+    { "nome": "Marcos", "telefone": "79342489293" },
+]
 
 def adicionar_contato(nome, telefone):    
     lista_contatos.append({
@@ -30,7 +34,7 @@ def listar_contatos():
     
 def buscar_contato_por_nome(nome):
     indice = lista_contatos.index(nome)
-    return lista_contatos[indice]
+    return lista_contatos[indice][nome]
     
 
 while True:
