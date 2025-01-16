@@ -13,6 +13,7 @@ for i in range(0, 3):
     lista_pessoas.append(pessoa)
     
     print()
-
-
-print(f"Pessoa mais velha: {max(lista_pessoas)}")
+    
+pessoa_velha = max(lista_pessoas, key=lambda pessoa: pessoa["idade"])
+    
+print(f"Pessoa mais velha: {pessoa_velha["nome"]} com {pessoa_velha["idade"]} anos")
