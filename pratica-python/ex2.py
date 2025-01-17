@@ -1,18 +1,21 @@
 # Operações básicas
 
 # Faça um programa que receba dois números do usuário e exiba a soma, subtração, multiplicação e divisão deles.
+# Condicionais simples
 
-primeiro_numero = int(input("Digite o primeiro número: "))
-segundo_numero = int(input("Digite o segundo número: "))
+numero1 = int(input("Digite o primeiro número: "))
+numero2 = int(input("Digite o segundo número: "))
 
-soma = primeiro_numero + segundo_numero
-subtracao = primeiro_numero - segundo_numero
-multiplicacao = primeiro_numero * segundo_numero
-divisao = primeiro_numero / segundo_numero
-divisao_inteira = primeiro_numero // segundo_numero
+soma = numero1 + numero2
+subtacao = numero1 - numero2
+multiplicao = numero1 * numero2
+divisao = numero1 / numero2
+divisao_inteira = numero1 // numero2
 
-print(f"Soma entre {primeiro_numero} e {segundo_numero}: {soma}")
-print(f"Subtração entre {primeiro_numero} e {segundo_numero}: {subtracao}")
-print(f"Multiplicação entre {primeiro_numero} e {segundo_numero}: {multiplicacao}")
-print(f"Divisão entre {primeiro_numero} e {segundo_numero}: {divisao:.3}")
-print(f"Divisão inteira entre {primeiro_numero} e {segundo_numero}: {divisao_inteira}")
+print()
+print(f"Soma entre {numero1} e {numero2} é {soma}")
+print(f"Subtração entre {numero1} e {numero2} é {subtacao}")
+print(f"Multiplicação entre {numero1} e {numero2} é {multiplicao}")
+print(f"Divisão entre {numero1} e {numero2} é {divisao}")
+print(f"Divisão inteira entre {numero1} e {numero2} é {divisao_inteira}")
+

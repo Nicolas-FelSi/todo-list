@@ -3,7 +3,6 @@
 # Escreva um programa que imprima "Olá, mundo!".
 # Depois, modifique para pedir o nome do usuário e dizer "Olá, [nome]!".
 
-# print("Olá, mundo!")
+nome_usuario = input("Digite seu nome: ")
 
-nome = input("Digite seu nome: ")
-print(f"Olá, {nome}")
+print(f"Olá, {nome_usuario}!")

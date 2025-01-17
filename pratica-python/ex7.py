@@ -6,10 +6,9 @@
 # c) Se a palavra "Python" está na frase.
 
 frase = input("Digite uma frase: ").strip()
-frase_em_partes = frase.split()
 
-print(f"Número de palavras: {len(frase_em_partes)}")
-print(frase.upper())
-print(frase.lower())
-print("Python" in frase)
+print(f"Número de palavras: {len(frase.split())}")
+print(f"Frase em maiúscula: {frase.upper()}")
+print(f"Frase em minúscula: {frase.lower()}")
+print(f"Python está na frase? {"Python" in frase}")
 

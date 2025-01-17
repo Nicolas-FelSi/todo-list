@@ -5,8 +5,9 @@
 # b) O menor número.
 # c) A soma de todos os números.
 
-lista_numeros = [3, 5, 13, 65, 35]
+lista_numeros = [1, 3, 5, 7, 4]
 
 print(f"Maior número: {max(lista_numeros)}")
-print(f"Menor número: {min(lista_numeros)}")
-print(f"Soma de todos os números: {sum(lista_numeros)}")
+print(f"O menor número: {min(lista_numeros)}")
+print(f"A soma de todos os números: {sum(lista_numeros)}")
+
