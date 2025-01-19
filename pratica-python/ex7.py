@@ -10,5 +10,5 @@ frase = input("Digite uma frase: ").strip()
 print(f"Número de palavras: {len(frase.split())}")
 print(f"Frase em maiúscula: {frase.upper()}")
 print(f"Frase em minúscula: {frase.lower()}")
-print(f"Python está na frase? {"Python" in frase}")
+print(f"Python está na frase? {'Python' in frase}")
 

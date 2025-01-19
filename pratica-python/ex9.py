@@ -16,4 +16,4 @@ for i in range(3):
 
 pessoa_mais_velha = max(lista_pessoas, key=lambda pessoa: pessoa["idade"])
 
-print(f"A pessoa mais velha é {pessoa_mais_velha["nome"]} com {pessoa_mais_velha["idade"]} anos")
+print(f"A pessoa mais velha é {pessoa_mais_velha['nome']} com {pessoa_mais_velha['idade']} anos")
