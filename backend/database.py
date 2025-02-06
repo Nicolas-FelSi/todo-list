@@ -36,35 +36,49 @@ while True:
                 print()
                 print("O título não pode estar vazio.")
             
-        elif opcao == 2:
-            cursor.execute("SELECT * FROM task")
-            tasks = cursor.fetchall()
-            for task in tasks:
-                print(f"{task[0]} - {task[1]} - {task[3]}")
+        # elif opcao == 2:
+        #     cursor.execute("SELECT * FROM task")
+        #     tasks = cursor.fetchall()
             
-            task = {
-                "titulo": input("Digite o titulo da tarefa: ").strip(),
-                "descricao": input("Digite a descrição da tarefa: ").strip()
-            }
+        #     for task in tasks:
+        #         print(f"{task[0]} - {task[1]} - {task[3]}")
             
-            # TERMINAR LÓGICA DE EDITAR TAREFA
+        #     task_id = input("Digite o ID da tarefa que quer editar: ").strip()
+            
+        #     if task_id.isnumeric():
+        #         task_id = int(task_id)
+        #         cursor.execute("UPDATE task SET ")
+                
+        #     else:
+        #         print("ID incorreto. Tente novamente.")
+            
         elif opcao == 3:
             cursor.execute("SELECT * FROM task")
             tasks = cursor.fetchall()
+            
             for task in tasks:
                 print(f"{task[0]} - {task[1]} - {task[3]}")
-        # elif opcao == 4:
+        elif opcao == 4:
+            cursor.execute("SELECT * FROM task")
+            tasks = cursor.fetchall()
+            
+            for task in tasks:
+                print(f"{task[0]} - {task[1]} - {task[3]}")
+                
+            id_task = input("Digite o ID da tarefa que quer deletar: ").strip()
+            
+            if id_task.isnumeric():
+                id_task = int(id_task)
+                cursor.execute("DELETE FROM task WHERE id = %s", id_task)
+                conexao.commit()
+            else:
+                print("ID incorreto. Tente novamente.")
         elif opcao == 5:
             cursor.close()
             conexao.close()
             break
         else:
             print("Opção incorreta. Tente novamente!")
-        
-
-# id = 2
-# cursor.execute("DELETE FROM task WHERE id = %s", id)
-# conexao.commit()
 
 # dados = ("status", id)
 # cursor.execute("UPDATE task SET status = %s WHERE id = %s", dados)
