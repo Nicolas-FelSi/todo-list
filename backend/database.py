@@ -43,9 +43,14 @@ while True:
                 print(f"{task[0]} - {task[1]} - {task[3]}")
             
             task = {
-                "titulo": input("Digite o titulo da tarefa: ").strip(),
-                "descricao": input("Digite a descrição da tarefa: ").strip()
+                "id": input("Digite o ID da tarefa: ").strip(),
             }
+            
+            if task['id'].isnumeric():
+                task['id'] = int(task['id'])
+                cursor.execute("SELECT * FROM task WHERE id = %s", task['id'])
+                task_editar = cursor.fetchone()
+                print(task_editar)
             
             # TERMINAR LÓGICA DE EDITAR TAREFA
         elif opcao == 3:
