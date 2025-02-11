@@ -1,5 +1,5 @@
 import psycopg2
-
+from flask import Flask
 
 conexao = psycopg2.connect(database = "todolist",
                         user = "postgres",
