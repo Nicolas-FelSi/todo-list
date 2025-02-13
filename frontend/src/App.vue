@@ -23,7 +23,12 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import axios from 'axios';
+
+const tasks = axios.get('http://127.0.0.1:5000')
+console.log(tasks)
+</script>
 
 <style scoped>
 form, section {
