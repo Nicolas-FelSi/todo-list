@@ -1,0 +1,9 @@
+.container-tarefas {
+    width: 400px;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+}
