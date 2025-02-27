@@ -1,12 +1,12 @@
 const form = document.querySelector("form");
 const semTarefa = document.getElementById("sem-tarefa");
-const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
 const sectionTarefas = document.getElementById("tarefas")
 
 renderizarTarefas(tarefas);
 
-form.addEventListener("submit", (evento) => {
-    evento.preventDefault();
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
     
     const inputTarefa = document.getElementById("tarefaId");
     
@@ -21,7 +21,8 @@ form.addEventListener("submit", (evento) => {
 
         renderizarTarefas(tarefas);
 
-        inputTarefa.textContent = "";
+        inputTarefa.value = "";
+        inputTarefa.focus();
 
     } else {
         if (document.querySelector(".text-danger-emphasis")) {
@@ -44,9 +45,9 @@ function renderizarTarefas(tarefas) {
         tarefas.forEach(tarefa => {
             const divContainer = document.createElement("div");
             divContainer.className = "p-2 bg-info bg-opacity-10 border border-info rounded-1 d-flex justify-content-between align-items-center shadow-sm";
+            divContainer.setAttribute("id", `${tarefa.id}`);
             
             const input = document.createElement("input");
-            input.setAttribute("id", `${tarefa.id}`);
             input.setAttribute("type", "checkbox");
     
             const texto = document.createElement("p");
@@ -73,3 +74,14 @@ function renderizarTarefas(tarefas) {
         });
     }
 }
+
+document.addEventListener("click", (event) => {
+    if (event.target.textContent == "delete_forever") {
+        const idTarefa = event.target.parentElement.parentElement.id;
+        const tarefasAtualizadas = tarefas.filter(tarefa => tarefa.id != idTarefa);
+        tarefas = tarefasAtualizadas;
+
+        localStorage.setItem("tarefas", JSON.stringify(tarefas));
+        renderizarTarefas(tarefas);
+    }
+})
