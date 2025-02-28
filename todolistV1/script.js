@@ -1,21 +1,33 @@
 const form = document.querySelector("form");
-const semTarefa = document.getElementById("sem-tarefa");
 let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
 const sectionTarefas = document.getElementById("tarefas")
 
+const divSemtarefa = document.createElement("div");
+divSemtarefa.className = "text-center m-0 bg-info bg-opacity-10 border border-info rounded-3 p-2";
+divSemtarefa.setAttribute("id", "sem-tarefa");
+divSemtarefa.textContent = "Nenhuma tarefa adicionada";
+
+sectionTarefas.appendChild(divSemtarefa);
+
 renderizarTarefas(tarefas);
+
+tarefas.forEach(tarefa => {
+    if (tarefa.concluida) {
+        concluirTarefa(tarefa.id);
+    }
+})
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     
     const inputTarefa = document.getElementById("tarefaId");
     
-    if (inputTarefa) {
+    if (inputTarefa.value.trim()) {
         if (document.querySelector(".text-danger-emphasis")) {
             document.querySelector(".text-danger-emphasis").setAttribute("class", "d-none");
         } 
 
-        tarefas.push({ id: tarefas.length +1, titulo: inputTarefa.value });
+        tarefas.push({ id: tarefas.length +1, titulo: inputTarefa.value, concluida: false });
         
         localStorage.setItem("tarefas", JSON.stringify(tarefas));
 
@@ -40,8 +52,8 @@ function renderizarTarefas(tarefas) {
     if (tarefas.length != 0) {
         sectionTarefas.innerHTML = "";
         
-        semTarefa.classList.add("d-none");
-        
+        divSemtarefa.classList.add("d-none");
+
         tarefas.forEach(tarefa => {
             const divContainer = document.createElement("div");
             divContainer.className = "p-2 bg-info bg-opacity-10 border border-info rounded-1 d-flex justify-content-between align-items-center shadow-sm";
@@ -49,6 +61,7 @@ function renderizarTarefas(tarefas) {
             
             const input = document.createElement("input");
             input.setAttribute("type", "checkbox");
+            input.checked = tarefa.concluida;
     
             const texto = document.createElement("p");
             texto.className = "m-0";
@@ -72,6 +85,10 @@ function renderizarTarefas(tarefas) {
             
             sectionTarefas.appendChild(divContainer);
         });
+    } else {
+        sectionTarefas.innerHTML = ""; 
+        sectionTarefas.appendChild(divSemtarefa); 
+        divSemtarefa.classList.remove("d-none")
     }
 }
 
@@ -80,8 +97,34 @@ document.addEventListener("click", (event) => {
         const idTarefa = event.target.parentElement.parentElement.id;
         const tarefasAtualizadas = tarefas.filter(tarefa => tarefa.id != idTarefa);
         tarefas = tarefasAtualizadas;
-
+        
         localStorage.setItem("tarefas", JSON.stringify(tarefas));
+        
         renderizarTarefas(tarefas);
+
+        if (document.getElementById(idTarefa)) {
+            document.getElementById(idTarefa).remove();
+        }
     }
 })
+
+document.addEventListener("click", (event) => {
+    if (event.target.type == "checkbox") {
+        const idTarefa = event.target.parentElement.id;
+        const tarefa = tarefas.find(tarefa => tarefa.id == idTarefa);
+
+        tarefa.concluida = event.target.checked;
+
+        localStorage.setItem("tarefas", JSON.stringify(tarefas));
+
+        concluirTarefa(idTarefa);
+    }
+})
+
+function concluirTarefa(idTarefa) {
+    document.getElementById(idTarefa).classList.toggle("bg-success")
+    document.getElementById(idTarefa).classList.toggle("bg-info")
+    document.getElementById(idTarefa).classList.toggle("bg-opacity-10")
+    document.getElementById(idTarefa).classList.toggle("bg-opacity-50")
+    document.getElementById(idTarefa).classList.toggle("text-decoration-line-through")
+}
